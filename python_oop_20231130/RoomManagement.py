@@ -129,11 +129,16 @@ class Hotel:
         for room in self.rooms:
             print(f"{room.display_info()}")
 
+def display_menu(hotel_name):
+    print(f"\nWelcome to {hotel_name}")
+    print("1. Foglalas")
+    print("2. Lemondas")
+    print("3. Listazas")
 
 
 def main():
     hotel = Hotel(name="Gabor Denes Hotel")
-
+ 
     check_in = datetime.now()
     check_out = check_in + timedelta(days=3)
 
@@ -157,6 +162,23 @@ def main():
     two_bed_room.list_bookings()
     print("Delte bookings")
     single_bed_room0.delete_booking(check_in, check_out)
+
+    while True:
+        display_menu(hotel.name)
+        choice = input("Enter your choice (1-3): ")
+
+        if choice == '1':
+            room_number = input("Enter room number: ")
+            check_in = datetime.strptime(input("Enter check-in date (YYYY-MM-DD): "), "%Y-%m-%d")
+            check_out = datetime.strptime(input("Enter check-out date (YYYY-MM-DD): "), "%Y-%m-%d")
+            num_guests = int(input("Enter the number of guests: "))
+            room_type = input("Please give the room tpye (single/double):")
+
+            if room_type == 'single':
+                single_bed_room_booking = EgyagyasSzoba(room_number=room_number) 
+                hotel.add_room(single_bed_room_booking)
+            else
+
 
 
 if __name__ == "__main__":
