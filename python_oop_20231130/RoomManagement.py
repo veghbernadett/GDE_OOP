@@ -88,6 +88,11 @@ class Hotel:
         print(f"Room {room_number} not found in {self.name}.")
         return False
 
+    def hotel_info(self):
+        print(self.name)
+        for room in self.rooms:
+            print(f"{room.display_info()}")
+
 
 def main():
     hotel = Hotel(name="Gabor Denes Hotel")
@@ -111,6 +116,8 @@ def main():
     hotel.book_room(101, 1)  # Successful booking
     hotel.book_room(single_bed_room0.room_number, 1)  # Successful booking
     hotel.book_room(102, 3)  # Booking fails due to insufficient capacity
+
+    hotel.hotel_info()
 
 if __name__ == "__main__":
     main()
