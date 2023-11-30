@@ -24,6 +24,16 @@ class Foglalas:
             return False
         
     @staticmethod
+    def delete_booking(room_bookings, check_in_date, check_out_date):
+        for booking in room_bookings:
+            if booking['check_in'] == check_in_date and booking['check_out'] == check_out_date:
+                room_bookings.remove(booking)
+                print(f"Booking from {check_in_date} to {check_out_date} deleted.")
+                return True
+        print("Booking not found for the specified dates.")
+        return False
+    
+    @staticmethod
     def list_bookings(room_bookings):
         print("All bookings for this room:")
         for booking in room_bookings:
@@ -79,6 +89,9 @@ class EgyagyasSzoba(Room):
     def is_available(self, check_in_date, check_out_date):
         return Foglalas.is_available(self.bookings, check_in_date, check_out_date)
     
+    def delete_booking(self, check_in_date, check_out_date):
+        return Foglalas.delete_booking(self.bookings, check_in_date, check_out_date)
+    
     def list_bookings(self):
         Foglalas.list_bookings(self.bookings)
 
@@ -96,6 +109,9 @@ class KetagyasSzoba(Room):
 
     def is_available(self, check_in_date, check_out_date):
         return Foglalas.is_available(self.bookings, check_in_date, check_out_date)
+    
+    def delete_booking(self, check_in_date, check_out_date):
+        return Foglalas.delete_booking(self.bookings, check_in_date, check_out_date)
     
     def list_bookings(self):
         Foglalas.list_bookings(self.bookings)
@@ -132,7 +148,7 @@ def main():
     hotel = Hotel(name="Gabor Denes Hotel")
 
     check_in = datetime.now()
-    check_out = check_in + timedelta(days=5)
+    check_out = check_in + timedelta(days=3)
 
     single_bed = int(input("Single bed booking. Please give a room no: ")) #100
     single_bed_room0 = EgyagyasSzoba(room_number=single_bed) 
@@ -152,6 +168,8 @@ def main():
     single_bed_room0.list_bookings()
     print(f"Room no {two_bed_room.room_number}, Type: Double")
     two_bed_room.list_bookings()
+    print("Delte bookings")
+    single_bed_room0.delete_booking(check_in, check_out)
 
 
 if __name__ == "__main__":
