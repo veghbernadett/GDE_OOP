@@ -184,16 +184,17 @@ def main():
             room_type = input("Please give the room tpye (single/double):")
 
             try:
-                if room_type == 'single':
-                    single_bed_room_booking = EgyagyasSzoba(room_number=room_number) 
-                    hotel.add_room(single_bed_room_booking)
-                    single_bed_room_booking.book_room(check_in, check_out, num_guests) 
-                    print("Booking successful!")
-                elif room_type == 'double':
-                    double_bed_room_booking = KetagyasSzoba(room_number=room_number) 
-                    hotel.add_room(double_bed_room_booking)
-                    double_bed_room_booking.book_room(check_in, check_out, num_guests) 
-                    print("Booking successful!")
+                if check_out > check_in:
+                    if room_type == 'single':
+                        single_bed_room_booking = EgyagyasSzoba(room_number=room_number) 
+                        hotel.add_room(single_bed_room_booking)
+                        single_bed_room_booking.book_room(check_in, check_out, num_guests) 
+                        print("Booking successful!")
+                    elif room_type == 'double':
+                        double_bed_room_booking = KetagyasSzoba(room_number=room_number) 
+                        hotel.add_room(double_bed_room_booking)
+                        double_bed_room_booking.book_room(check_in, check_out, num_guests) 
+                        print("Booking successful!")
             except ValueError as e:
                 print(e)
         elif choice == '2':
