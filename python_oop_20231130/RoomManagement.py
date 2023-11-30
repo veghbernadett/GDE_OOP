@@ -134,6 +134,8 @@ def display_menu(hotel_name):
     print("1. Foglalas")
     print("2. Lemondas")
     print("3. Listazas")
+    print("4. Exit")
+
 
 
 def main():
@@ -165,7 +167,7 @@ def main():
 
     while True:
         display_menu(hotel.name)
-        choice = input("Enter your choice (1-3): ")
+        choice = input("Enter your choice (1-4): ")
 
         if choice == '1':
             room_number = input("Enter room number: ")
@@ -187,6 +189,8 @@ def main():
                     print("Booking successful!")
             except ValueError as e:
                 print(e)
+        elif choice == '4':
+            print("Exiting the Booking System. Thank you!")
             break
 
 
