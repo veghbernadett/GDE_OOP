@@ -201,7 +201,12 @@ def main():
             check_in = datetime.strptime(input("Enter check-in date (YYYY-MM-DD): "), "%Y-%m-%d")
             check_out = datetime.strptime(input("Enter check-out date (YYYY-MM-DD): "), "%Y-%m-%d")
 
-            pass
+            room = hotel.get_room_by_number(room_number)
+            if room:
+                room.delete_booking(check_in, check_out)
+                print("Booking is deleted")
+            else:
+                print("Room is not found")
 
         elif choice == '3':
             hotel.hotel_info()
