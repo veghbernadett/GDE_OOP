@@ -22,6 +22,12 @@ class Foglalas:
         else:
             print("Booking failed. Room is not available for the specified dates.")
             return False
+        
+    @staticmethod
+    def list_bookings(room_bookings):
+        print("All bookings for this room:")
+        for booking in room_bookings:
+            print(f"Check-in: {booking['check_in']}, Check-out: {booking['check_out']}, Guests: {booking['num_guests']}")
 
 class Room(ABC):
     def __init__(self, room_number, capacity, rate):
@@ -72,6 +78,9 @@ class EgyagyasSzoba(Room):
 
     def is_available(self, check_in_date, check_out_date):
         return Foglalas.is_available(self.bookings, check_in_date, check_out_date)
+    
+    def list_bookings(self):
+        Foglalas.list_bookings(self.bookings)
 
 class KetagyasSzoba(Room):
     def __init__(self, room_number):
@@ -87,6 +96,9 @@ class KetagyasSzoba(Room):
 
     def is_available(self, check_in_date, check_out_date):
         return Foglalas.is_available(self.bookings, check_in_date, check_out_date)
+    
+    def list_bookings(self):
+        Foglalas.list_bookings(self.bookings)
     
 class Hotel:
     def __init__(self, name):
@@ -131,14 +143,16 @@ def main():
     hotel.add_room(single_bed_room)
     hotel.add_room(two_bed_room)
 
-    hotel.hotel_info()
-
     single_bed_room0.book_room(check_in, check_out, 1) 
    # single_bed_room.book_room(check_in, check_out, 3)  # It should fail.   
     two_bed_room.book_room(check_in, check_out, 2)  
 
+    hotel.hotel_info()
+    print(f"Room no {single_bed_room0.room_number}, Type: Single")
+    single_bed_room0.list_bookings()
+    print(f"Room no {two_bed_room.room_number}, Type: Double")
+    two_bed_room.list_bookings()
 
-    
 
 if __name__ == "__main__":
     main()
