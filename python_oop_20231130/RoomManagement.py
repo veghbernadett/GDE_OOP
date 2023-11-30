@@ -195,6 +195,8 @@ def main():
                         hotel.add_room(double_bed_room_booking)
                         double_bed_room_booking.book_room(check_in, check_out, num_guests) 
                         print("Booking successful!")
+                else:
+                    print("Date error")
             except ValueError as e:
                 print(e)
         elif choice == '2':
