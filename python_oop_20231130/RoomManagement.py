@@ -211,7 +211,6 @@ def main():
         elif choice == '3':
             hotel.hotel_info()
         
-        
         elif choice == '4':
             print("Exiting the Booking System. Thank you!")
             break
