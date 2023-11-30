@@ -124,19 +124,6 @@ class Hotel:
     def add_room(self, room):
         self.rooms.append(room)
 
-    #def display_available_rooms(self):
-    #    print(f"Available rooms at {self.name}:")
-    #    for room in self.rooms:
-    #        if not room.is_booked:
-    #            room.display_info()
-
-    #def book_room(self, room_number, num_guests):
-    #    for room in self.rooms:
-    #        if room.room_number == room_number:
-    #            return room.book_room(num_guests)
-    #    print(f"Room {room_number} not found in {self.name}.")
-    #    return False
-
     def hotel_info(self):
         print(self.name)
         for room in self.rooms:
