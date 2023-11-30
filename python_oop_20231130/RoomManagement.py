@@ -129,6 +129,12 @@ class Hotel:
         for room in self.rooms:
             print(f"{room.display_info()}")
 
+    def get_room_by_number(self, room_number):
+        for room in self.rooms:
+            if room.room_number == room_number:
+                return room
+        return None
+
 def display_menu(hotel_name):
     print(f"\nWelcome to {hotel_name}")
     print("1. Foglalas")
