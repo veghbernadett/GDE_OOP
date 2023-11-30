@@ -41,7 +41,7 @@ class EgyagyasSzoba(Room):
     def book_room(self, num_guests):
         if not self.is_booked and num_guests == 1:
             self.is_booked = True
-            print(f"Single Bed Room {self.room_number} booked for 1 guest.")
+            print(f"Single Bed Room {self.room_number} booked for 1 guest. Price: {self.rate}")
             return True
         elif self.is_booked:
             print(f"Single Bed Room {self.room_number} is already booked.")
@@ -59,7 +59,7 @@ class KetagyasSzoba(Room):
     def book_room(self, num_guests):
         if not self.is_booked and num_guests <= self.capacity:
             self.is_booked = True
-            print(f"Two Bed Room {self.room_number} booked for {num_guests} guests.")
+            print(f"Two Bed Room {self.room_number} booked for {num_guests} guests. Price: {self.rate}")
             return True
         elif self.is_booked:
             print(f"Two Bed Room {self.room_number} is already booked.")
