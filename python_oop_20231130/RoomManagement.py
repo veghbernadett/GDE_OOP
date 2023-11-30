@@ -133,7 +133,7 @@ def display_menu(hotel_name):
     print(f"\nWelcome to {hotel_name}")
     print("1. Foglalas")
     print("2. Lemondas")
-    print("3. Listazas")
+    print("3. Listazas - hotel info")
     print("4. Exit")
 
 
@@ -189,6 +189,17 @@ def main():
                     print("Booking successful!")
             except ValueError as e:
                 print(e)
+        elif choice == '2':
+            room_number = input("Enter room number: ")
+            check_in = datetime.strptime(input("Enter check-in date (YYYY-MM-DD): "), "%Y-%m-%d")
+            check_out = datetime.strptime(input("Enter check-out date (YYYY-MM-DD): "), "%Y-%m-%d")
+
+            pass
+
+        elif choice == '3':
+            hotel.hotel_info()
+        
+        
         elif choice == '4':
             print("Exiting the Booking System. Thank you!")
             break
