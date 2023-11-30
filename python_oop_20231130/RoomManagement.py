@@ -165,6 +165,7 @@ def main():
     print("Delte bookings")
     single_bed_room0.delete_booking(check_in, check_out)
 
+    # user interface
     while True:
         display_menu(hotel.name)
         choice = input("Enter your choice (1-4): ")
